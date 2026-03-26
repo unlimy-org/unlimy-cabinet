@@ -1,4 +1,4 @@
-name: Lint & Format
+name: Reusable - Lint, Format, Type Check
 
 on:
   workflow_call:
