@@ -10,6 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Validate deploy secrets
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          set -e
+          missing=0
+
+          for name in DEPLOY_HOST DEPLOY_USER DEPLOY_SSH_KEY DEPLOY_PATH; do
+            if [ -z "${!name}" ]; then
+              echo "::error title=Missing secret::GitHub secret '$name' is required for deploy"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
       - name: Deploy on server via SSH
         uses: appleboy/ssh-action@v1.2.0
         with:
@@ -17,6 +38,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: ${{ secrets.DEPLOY_PORT || '22' }}
+          command_timeout: 30m
           script_stop: true
           script: |
             set -e
