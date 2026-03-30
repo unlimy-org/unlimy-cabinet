@@ -1,4 +1,4 @@
-# Bedolaga Cabinet - Web Interface
+# Unlimy Cabinet - Web Interface
 
 Веб-интерфейс личного кабинета для VPN бота на базе [Remnawave Bedolaga Telegram Bot V3.0.0+](https://github.com/BEDOLAGA-DEV/remnawave-bedolaga-telegram-bot).
 
@@ -323,13 +323,3 @@ bedolaga-cabinet/
 └── .env.example       # Пример переменных окружения
 ```
 
-## Связанные проекты
-
-- [Remnawave Bedolaga Telegram Bot](https://github.com/BEDOLAGA-DEV/remnawave-bedolaga-telegram-bot) — Backend бота
-- [Bedolaga Chat](https://t.me/+wTdMtSWq8YdmZmVi) — Чат поддержки
-
-## Контакты
-
-- Telegram: [@fringg](https://t.me/fringg)
-- Telegram: [@pedzeo](https://t.me/pedzeo)
-- Чат: [Bedolaga Chat](https://t.me/+wTdMtSWq8YdmZmVi)
